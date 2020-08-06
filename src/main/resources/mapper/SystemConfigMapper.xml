@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gradle.api_server.dao.SystemConfigMapper">
-  <resultMap id="BaseResultMap" type="com.gradle.api_server.model.SystemConfig">
+<mapper namespace="com.dian.api_service.dao.SystemConfigMapper">
+  <resultMap id="BaseResultMap" type="com.dian.api_service.model.SystemConfig">
     <id column="config_id" jdbcType="INTEGER" property="configId" />
     <result column="param_name" jdbcType="VARCHAR" property="paramName" />
     <result column="param_value" jdbcType="VARCHAR" property="paramValue" />
@@ -20,13 +20,13 @@
     delete from system_config
     where config_id = #{configId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.gradle.api_server.model.SystemConfig">
+  <insert id="insert" parameterType="com.dian.api_service.model.SystemConfig">
     insert into system_config (config_id, param_name, param_value, 
       param_desc)
     values (#{configId,jdbcType=INTEGER}, #{paramName,jdbcType=VARCHAR}, #{paramValue,jdbcType=VARCHAR}, 
       #{paramDesc,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gradle.api_server.model.SystemConfig">
+  <insert id="insertSelective" parameterType="com.dian.api_service.model.SystemConfig">
     insert into system_config
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="configId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gradle.api_server.model.SystemConfig">
+  <update id="updateByPrimaryKeySelective" parameterType="com.dian.api_service.model.SystemConfig">
     update system_config
     <set>
       <if test="paramName != null">
@@ -72,7 +72,7 @@
     </set>
     where config_id = #{configId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gradle.api_server.model.SystemConfig">
+  <update id="updateByPrimaryKey" parameterType="com.dian.api_service.model.SystemConfig">
     update system_config
     set param_name = #{paramName,jdbcType=VARCHAR},
       param_value = #{paramValue,jdbcType=VARCHAR},
